@@ -29,7 +29,8 @@
     - TODO
   - Pandas
     - TODO
-  - 
+  - Matplotlib + Seaborn
+    - TODO
 
 ## How to do modeling?
 
