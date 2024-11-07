@@ -668,7 +668,7 @@ In this example, `color` does not have to be a named parameter but `x`, `y` and 
 draw_dot('red', x=10, y=13, z=11)
 ```
 
-> [!INFO]
+> [!NOTE]
 > *Basically, all the parameters after the `*` are named parameters and all the parameters before that can be both called with their names and without*
 
 #### Functions Challenge 1
