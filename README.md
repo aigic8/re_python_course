@@ -21,7 +21,10 @@
       - [Lists Challenge 1](#lists-challenge-1)
       - [Lists Challenge 2](#lists-challenge-2)
       - [Lists Challenge 3](#lists-challenge-3)
-    - Variables - Dictionaries
+    - [Variables - Dictionaries](#variables---dictionaries)
+      - [Dictionaries Challenge 1](#dictionaries-challenge-1)
+      - [Dictionaries Challenge 2](#dictionaries-challenge-2)
+      - [Dictionaries Challenge 3](#dictionaries-challenge-3)
     - Functions
 - CheatSheet
   - Jupyter keybindings
@@ -329,7 +332,7 @@ my_list = [1, "Alireza", True, 4.2]
 
 For checking common functions in lists you can check [Lists CheatSheet](#lists-cheatsheet)
 
-### Lists Challenge 1
+#### Lists Challenge 1
 
 Consider having a list of numbers:
 
@@ -404,6 +407,139 @@ for item in list_with_duplicates:
     list_without_duplicates.append(item)
 
 print(list_without_duplicates) # 1, 2, 4, 3
+```
+
+</details>
+
+### Variables - Dictionaries
+
+With dictionaries values are stored as key/value pairs. An example of a dictionary:
+
+```python
+##### Initializing a dictionary
+user_ages = {
+  "Alireza": 23,
+  "Mohammad": 25,
+  "Hamed": 18,
+}
+
+##### Getting a value from a dictionary
+print(user_ages["Alireza"]) # 23
+
+##### Setting a value in a dictionary
+user_ages["Navid"] = 18 # setting a new value
+user_ages["Mohammad"] = 24 # replacing a current value
+print(user_ages["Mohammad"]) # 24
+print(user_ages["Mohammad"]) # 18
+```
+
+Some important points on dictionaries:
+
+- Unlike lists, the order of elements is not saved in the dictionaries
+- They are useful when you want to get a value by a specific key (and not an index)
+
+For more information on common functions on dictionaries, check out [Dictionaries CheatSheet](#dictionaries-cheatsheet)
+
+#### Dictionaries Challenge 1
+
+Consider we have the following variables:
+
+```python
+my_dict = {"Alireza": 23, "Mohammad": 11, "Hamed": 22}
+```
+
+Write a code that prints all the keys
+
+```text
+Alireza
+Mohammad
+Hamed
+```
+
+<details>
+<summary>Answer</summary>
+
+```python
+my_dict = {"Alireza": 23, "Mohammad": 11, "Hamed": 22}
+for key in my_dict.keys():
+  print(key)
+```
+
+</details>
+
+#### Dictionaries Challenge 2
+
+Consider we have the following variables:
+
+```python
+my_list = [1, 1, 3, 2, 3, 3, 4, 5, 3]
+frequencies = {}
+```
+
+Fill the dictionaries in a way that the key and values represent number of accurances
+of a number in the list. For this example it would be:
+
+```python
+print(frequencies) # {1: 2, 2: 1, 3: 4, 4: 1, 5: 1}
+```
+
+You can see number `3` occurred `4` times in the list as a result `frequencies[3]` is `4`. 
+Number `5` occurred only once and `frequncies[5]` is `1`.
+
+<details>
+<summary>Answer</summary>
+
+```python
+my_list = [1, 1, 3, 2, 3, 3, 4, 5, 3]
+frequencies = {}
+for item in my_list:
+  if item in frequencies:
+    frequencies[item] += 1
+  else
+    frequencies[item] = 1
+
+print(frequencies)
+```
+
+</details>
+
+#### Dictionaries Challenge 3
+
+Consider we have the following variables:
+
+```python
+my_dict = {"Alireza": 18, "Mohammad": 18, "Hamed": 30, "Navid": 30, "Majid": 5}
+ages_dict = {}
+```
+
+Write a code that reverses the keys and values and for each age (as a key) shows all the people who have that age (value as a list). For this example it would be:
+
+```python
+print(ages_dict) 
+# { 
+#   18: ["Alireza", "Mohammad"] ,
+#   30: ["Hamed", "Navid"],
+#   5: ["Majid"]
+#}
+```
+
+Both `Alireza` and `Mohammad` have the age of `18` so they appeared in a list
+with the key of `18`. `Majid` is the only person with the age of `5` so he appeared in
+list with a single element with the key of `5`.
+
+<details>
+<summary>Answer</summary>
+
+```python
+my_dict = {"Alireza": 18, "Mohammad": 18, "Hamed": 30, "Navid": 30, "Majid": 5}
+ages_dict = {}
+for age, name in my_dict.items():
+  if age in ages_dict:
+    ages_dict[age].append(name)
+  else
+    ages_dict[age] = [name]
+
+print(ages_dict)
 ```
 
 </details>
@@ -558,3 +694,79 @@ my_list = ["Alireza", "Mohammad", "Hamed"]
 print("Alireza" in my_list) # True
 print("Davood"in my_list) # False
 ```
+
+## Dictionaries CheatSheet
+
+### Length of dictionary
+
+Length of dictionary can be checked like a list:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+print(len(my_dict)) # 3
+```
+
+### Checking if key exists
+
+Wether a key exists in a dict or not can be checked using the `in` operator:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+if "Hamed" in my_dict:
+  print(my_dict["Hamed"]) # prints 16
+if "Navid" in my_dict:
+  print(my_dict["Navid"]) # does not print
+```
+
+### Iterating over dictionary
+
+Iterating through keys of a dict:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+for key in my_dict.keys():
+  print(key) # Alireza, Mohammad, Hamed
+```
+
+Iterating through values of a dict:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+for value in my_dict.values():
+  print(value) # 12, 23, 16
+```
+
+Iterating through key/value pairs of a dict:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+for key, value in my_dict.items():
+  print(key, value) # Alireza, 12; Mohammad, 23; Hamed, 16
+```
+
+### Removing an element
+
+For removing an element use the `del` keyword:
+
+```python
+my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+del my_dict["Alireza"]
+print(my_dict) # { "Mohammad": 23, "Hamed": 16 }
+```
+
+### Merging Dictionaries (Python 3.9+)
+
+For merging (combining) two dictionaries use the `|` operator:
+
+```python
+dict_1 = {"Alireza": 12, "Mohammad": 18}
+dict_2 = {"Mohammad": 23, "Hamed": 16}
+my_dict = dict_1 | dict_2
+print(my_dict) # {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
+```
+
+> [!NOTE]
+> Notice how `Mohammad` exists in both dictionaries and is overrided by `dict_2` value. This
+> is how mergin operator works. It overrides the values from from left-hand-side if a duplicate
+> exists in the right-hand-side. If we did the reverse, (`dict_2 | dict_1`) then the value of
+> `Mohammad` would be `18`.
