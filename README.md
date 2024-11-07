@@ -16,11 +16,11 @@
   - [Getting Familiar with Python's Basic Syntax](#getting-familiar-with-pythons-basic-syntax)
     - [Variables - Basic Types](#variables---basic-types)
     - [Comments](#comments)
-    - Conditional Clauses
+    - [Conditional Clauses](#conditional-clauses)
     - [Variables - Lists](#variables---lists)
       - [Lists Challenge 1](#lists-challenge-1)
       - [Lists Challenge 2](#lists-challenge-2)
-    - Variables - Tuples
+      - [Lists Challenge 3](#lists-challenge-3)
     - Variables - Dictionaries
     - Functions
 - CheatSheet
@@ -110,7 +110,7 @@ python --version
   - If you have a data file, the file must be uploaded to the Colab
   - The resources in the free edition is probably enough for your projects
 - **Jupyter notebook**
-  - I widely used tool, but personally, I have no experience using it
+  - Commonly used tool, but personally, I have no experience using it
 
 ## Getting Familiar with Jupyter
 
@@ -180,6 +180,134 @@ In python the syntax for comments in `#` character and then the comment
 name = "Alireza" # comments can also start from the middle of the lines
 ```
 
+### Conditional Clauses
+
+In python we have 3 main conditional blocks:
+
+- `if`
+- `elif`
+- `else`
+
+An example of using these conditionals:
+
+```python
+name = "Mohammad"
+if name == "Alireza":
+  print("Hello AR!") # this will not print
+elif name == "Hamed":
+  print("Hello HD!") # this will not print
+else:
+  print("Hello MD!") # this will print
+```
+
+> [!NOTE]
+> Notice how we are using `==` and not `=`. This is a `comparison operator`.
+> `=` gives a certain variable certain value, but `==` means to check if values are the same.
+> For example:
+>
+> ```python
+> name = "Alireza"
+> print(name == "Alireza") # True
+> print(name == "Hamed") # False
+> ```
+>
+> Other common comparison operators are:
+>
+> - `>`: greater
+> - `<`: less
+> - `>=`: greater or equal to
+> - `<=`: less or equal to
+> - `!=`: not equal to
+
+Another important point:
+
+> [!NOTE]
+> Unlike other languages in python you can have two sided comparisons for a variable.
+> For example
+>
+> ```python
+> age = 23
+> is_teen = 9 > age > 20
+> print(is_teen) # False
+> ```
+
+#### `or` logical operator
+
+```python
+name = "Alireza" 
+age = 23
+is_working = False
+if age >= 18 or is_working:
+  print("good living on your own") # does not print
+```
+
+#### `and` logical operator
+
+```python
+name = "Alireza" 
+age = 23
+if name == "Alireza" and age < 18:
+  print("child Alireza") # does not print
+elif name == "Alireza" and age >= 18:
+  print("adult Alireza") # prints
+else:
+  print("unknown person") # does not print
+```
+
+#### `not` logical operator
+
+The not operators reverses the result:
+
+```python
+name = "Alireza" 
+if not name == "Mohammad":
+  print("Hello bot Mohammad") # prints
+```
+
+#### Combining logical operators
+
+```python
+name = "Mohammad"
+mohammad_has_permission = True
+
+if name == "Alireza" or (name == "Mohammad" and mohammad_has_permission):
+  print("you are allowed")
+```
+
+#### Conditional Clauses - Challenge 1
+
+Write a code that check if a person is eligible for voting or not checking the following variables:
+
+```python
+age = 20
+is_citizen = True
+```
+
+and prints the following statements in the following scenarios:
+
+- `person is citizen and older (greater equal) than 18`: "You can vote"
+- `person is citizen and younger than 18`: "You are too young"
+- `person is not citizen and older (greater equal) than 18`: "You not a citizen"
+- `person is not citizen and younger than 18`: "What are you doing here?"
+
+<details>
+<summary>Answer</summary>
+
+```python
+age = 20
+is_citizen = True
+if age >= 18 and is_citizen:
+  print("You can vote")
+elif age < 18 and is_citizen:
+  print("You are too young")
+elif age >= 18 and not is_citizen:
+  print("You are not a citizen")
+else:
+  print("What are you doing here?")
+```
+
+</details>
+
 ### Variables - Lists
 
 In python lists are a group of items. Important points about lists:
@@ -201,7 +329,29 @@ my_list = [1, "Alireza", True, 4.2]
 
 For checking common functions in lists you can check [Lists CheatSheet](#lists-cheatsheet)
 
-#### Lists Challenge 1
+### Lists Challenge 1
+
+Consider having a list of numbers:
+
+```python
+my_list = [1, 4, 8, 12, 13, 3]
+```
+
+write a code that print elements only if they are *greater than 5*.
+
+<details>
+<summary>Answer</summary>
+
+```python
+my_list = [1, 4, 8, 12, 13, 3]
+for item in list:
+  if item > 5:
+    print(item)
+```
+
+</details>
+
+#### Lists Challenge 2
 
 Consider having a lists of `int` variables like the following:
 
@@ -227,7 +377,7 @@ print(my_list)
 
 </details>
 
-#### Lists Challenge 2
+#### Lists Challenge 3
 
 Consider having the following variables:
 
