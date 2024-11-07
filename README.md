@@ -37,18 +37,22 @@
       - [(Advanced) Functions `*` keyword for parameters](#advanced-functions--keyword-for-parameters)
       - [Functions Challenge 1](#functions-challenge-1)
       - [Functions Challenge 2](#functions-challenge-2)
-    - [Iterating items](#iterating-items)
-    - [Adding new elements](#adding-new-elements)
-    - [Removing elements](#removing-elements)
-    - [Modifying Elements](#modifying-elements)
-    - [Selecting elements](#selecting-elements)
-    - [Checking if element exists in a list](#checking-if-element-exists-in-a-list)
-  - [Dictionaries CheatSheet](#dictionaries-cheatsheet)
-    - [Length of dictionary](#length-of-dictionary)
-    - [Checking if key exists](#checking-if-key-exists)
-    - [Iterating over dictionary](#iterating-over-dictionary)
-    - [Removing an element](#removing-an-element)
-    - [Merging Dictionaries (Python 3.9+)](#merging-dictionaries-python-39)
+  - [CheatSheet](#cheatsheet)
+    - [Jupyter Notebook Keybindings](#jupyter-notebook-keybindings)
+    - [Lists CheatSheet](#lists-cheatsheet)
+      - [Length of the list](#length-of-the-list)
+      - [Iterating items](#iterating-items)
+      - [Adding new elements](#adding-new-elements)
+      - [Removing elements](#removing-elements)
+      - [Modifying Elements](#modifying-elements)
+      - [Selecting elements](#selecting-elements)
+      - [Checking if element exists in a list](#checking-if-element-exists-in-a-list)
+    - [Dictionaries CheatSheet](#dictionaries-cheatsheet)
+      - [Length of dictionary](#length-of-dictionary)
+      - [Checking if key exists](#checking-if-key-exists)
+      - [Iterating over dictionary](#iterating-over-dictionary)
+      - [Removing an element](#removing-an-element)
+      - [Merging Dictionaries (Python 3.9+)](#merging-dictionaries-python-39)
   - [To Dos](#to-dos)
 
 ## How to do modeling?
@@ -692,8 +696,6 @@ input: [12, 15, 18, 10, 11, 7]
 output: 18
 ```
 
-
-
 <details>
 <summary>Answer</summary>
 
@@ -704,13 +706,13 @@ def my_max(nums):
     if num > curr_max:
       curr_max = num
   return curr_max
-k``
+```
 
 </details>
 
 ## CheatSheet
 
-## Jupyter Notebook Keybindings
+### Jupyter Notebook Keybindings
 
 - `Shift + Enter`: Run the cell and move to the next one.
 - `Ctrl + Enter`: Run the cell but stay on the same cell.
@@ -721,9 +723,9 @@ k``
 - `D`: Delete the selected cell.
 - `Z`: Undo cell deletion.
 
-## Lists CheatSheet
+### Lists CheatSheet
 
-### Length of the list
+#### Length of the list
 
 To check the length (size) of the lists use the `len` function:
 
@@ -732,7 +734,7 @@ my_list = [1, 2, 3, 4]
 print(len(list)) # 4
 ```
 
-### Iterating items
+#### Iterating items
 
 Basic iterating through a list:
 
@@ -755,7 +757,7 @@ for index, item in enumerate(my_list):
 > In lists, the order of elements matter and each element has a known index.
 > The first element has index of `0` (and not `1`), the second element has `1` and ...
 
-### Adding new elements
+#### Adding new elements
 
 To add an element to the **end of the list**:
 
@@ -777,7 +779,7 @@ my_list.insert(1, "Hamed")
 print(my_list) # Alireza, Hamed, Mohammad
 ```
 
-### Removing elements
+#### Removing elements
 
 Removing by value:
 
@@ -799,7 +801,7 @@ my_list.pop(1)
 print(my_list) # Alireza
 ```
 
-### Modifying Elements
+#### Modifying Elements
 
 Single elements can be modified with:
 
@@ -809,7 +811,7 @@ my_list[1] = "Hamed"
 print(my_list) # Alireza, Hamed
 ```
 
-### Selecting elements
+#### Selecting elements
 
 Selecting a single element in a list:
 
@@ -849,7 +851,7 @@ els_neg = my_list[:-2] # select where from the end < 2
 print(els_neg) # Alireza
 ```
 
-### Checking if element exists in a list
+#### Checking if element exists in a list
 
 To check if an element is in the list:
 
@@ -859,9 +861,9 @@ print("Alireza" in my_list) # True
 print("Davood"in my_list) # False
 ```
 
-## Dictionaries CheatSheet
+### Dictionaries CheatSheet
 
-### Length of dictionary
+#### Length of dictionary
 
 Length of dictionary can be checked like a list:
 
@@ -870,7 +872,7 @@ my_dict = {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
 print(len(my_dict)) # 3
 ```
 
-### Checking if key exists
+#### Checking if key exists
 
 Wether a key exists in a dict or not can be checked using the `in` operator:
 
@@ -882,7 +884,7 @@ if "Navid" in my_dict:
   print(my_dict["Navid"]) # does not print
 ```
 
-### Iterating over dictionary
+#### Iterating over dictionary
 
 Iterating through keys of a dict:
 
@@ -908,7 +910,7 @@ for key, value in my_dict.items():
   print(key, value) # Alireza, 12; Mohammad, 23; Hamed, 16
 ```
 
-### Removing an element
+#### Removing an element
 
 For removing an element use the `del` keyword:
 
@@ -918,7 +920,7 @@ del my_dict["Alireza"]
 print(my_dict) # { "Mohammad": 23, "Hamed": 16 }
 ```
 
-### Merging Dictionaries (Python 3.9+)
+#### Merging Dictionaries (Python 3.9+)
 
 For merging (combining) two dictionaries use the `|` operator:
 
