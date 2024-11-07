@@ -2,21 +2,27 @@
 
 ## Table of Contents
 
-- Course Outline
-  - [How to do modeling](#how-to-do-modeling)
+- [Python tutorial for Renewable Energy course](#python-tutorial-for-renewable-energy-course)
+  - [Table of Contents](#table-of-contents)
+  - [How to do modeling?](#how-to-do-modeling)
     - [What is the process of modeling](#what-is-the-process-of-modeling)
     - [Some Tips and Tricks](#some-tips-and-tricks)
   - [Setting up Your Environment](#setting-up-your-environment)
     - [Installing Python](#installing-python)
     - [Setting up the Editor](#setting-up-the-editor)
   - [Getting Familiar with Jupyter](#getting-familiar-with-jupyter)
-    - [Why Jupyter](#why-jupyter)
-    - [Making A Notebook in VS Code](#making-a-notebook-in-vs-code)
-    - [Moving around in Jupyter](#moving-around-in-a-notebook)
+    - [Why Jupyter?](#why-jupyter)
+    - [Making a Notebook in VS Code](#making-a-notebook-in-vs-code)
+    - [Moving Around in a Notebook](#moving-around-in-a-notebook)
   - [Getting Familiar with Python's Basic Syntax](#getting-familiar-with-pythons-basic-syntax)
     - [Variables - Basic Types](#variables---basic-types)
     - [Comments](#comments)
     - [Conditional Clauses](#conditional-clauses)
+      - [`or` logical operator](#or-logical-operator)
+      - [`and` logical operator](#and-logical-operator)
+      - [`not` logical operator](#not-logical-operator)
+      - [Combining logical operators](#combining-logical-operators)
+      - [Conditional Clauses - Challenge 1](#conditional-clauses---challenge-1)
     - [Variables - Lists](#variables---lists)
       - [Lists Challenge 1](#lists-challenge-1)
       - [Lists Challenge 2](#lists-challenge-2)
@@ -25,19 +31,25 @@
       - [Dictionaries Challenge 1](#dictionaries-challenge-1)
       - [Dictionaries Challenge 2](#dictionaries-challenge-2)
       - [Dictionaries Challenge 3](#dictionaries-challenge-3)
-    - Functions
-- CheatSheet
-  - Jupyter keybindings
-  - Python
-    - String
-    - Array
-    - Dictionary
-  - Numpy
-    - TODO
-  - Pandas
-    - TODO
-  - Matplotlib + Seaborn
-    - TODO
+    - [Functions](#functions)
+      - [Functions Basics](#functions-basics)
+      - [Passing parameters to functions by name](#passing-parameters-to-functions-by-name)
+      - [(Advanced) Functions `*` keyword for parameters](#advanced-functions--keyword-for-parameters)
+      - [Functions Challenge 1](#functions-challenge-1)
+      - [Functions Challenge 2](#functions-challenge-2)
+    - [Iterating items](#iterating-items)
+    - [Adding new elements](#adding-new-elements)
+    - [Removing elements](#removing-elements)
+    - [Modifying Elements](#modifying-elements)
+    - [Selecting elements](#selecting-elements)
+    - [Checking if element exists in a list](#checking-if-element-exists-in-a-list)
+  - [Dictionaries CheatSheet](#dictionaries-cheatsheet)
+    - [Length of dictionary](#length-of-dictionary)
+    - [Checking if key exists](#checking-if-key-exists)
+    - [Iterating over dictionary](#iterating-over-dictionary)
+    - [Removing an element](#removing-an-element)
+    - [Merging Dictionaries (Python 3.9+)](#merging-dictionaries-python-39)
+  - [To Dos](#to-dos)
 
 ## How to do modeling?
 
@@ -544,6 +556,158 @@ print(ages_dict)
 
 </details>
 
+### Functions
+
+Functions are *inspired* by math functions. They get some values as input and return none,one or multiple outputs. One function that we used is `print` for writing texts to the console.
+
+#### Functions Basics
+
+Functions are defined with the following syntax:
+
+```python
+def add(num1, num2):
+  return num1 + num2
+```
+
+The `return` keyword is for the output of the function. For example if you call this function it will return:
+
+```python
+num1 = 3
+num2 = 2
+
+res = add(num1, num2)
+print(res) # 5
+```
+
+Returning things is not necessary and functions can return nothing for example:
+
+```python
+def my_print(text):
+  print("my print")
+  print(text)
+
+my_print("salam") # my print, salam
+```
+
+#### Passing parameters to functions by name
+
+In python, you can pass parameters to function both **by order** and **by name**. For example consider this function:
+
+```python
+def draw_dot(color, x, y, z): 
+  print(f"drawing dot: x = {x}, y = {y}, z = {z}, color = {color}")
+```
+
+You can pass the parameters by order to the function:
+
+```python
+draw_dot('red', 10, 13, 11)
+```
+
+However, the problem is the code is not readable. If someone is not familiar with the function, he would have no idea which parameter is `x`, which is `y` and...
+
+In order to resolve this issue, we used `named parameters`. We can call this function using this method:
+
+```python
+draw_dot(color='red', x=10, y=13, z=11)
+draw_dot(color='blue', x=10, z=12, y=15)
+```
+
+This code is much more readable than the previous example, since we know which
+input parameter has which value.
+
+Also notice that in the second call the order of the parameters is not the same as the function definition and `z` comes before `y`.
+
+*When calling functions using named parameters the order of parameters does not matter.*
+
+> [!NOTE]
+> Generally it is a good idea to use named parameters when you have
+> more than 3 input parameters since they make your code much more
+> readable.
+
+#### (Advanced) Functions `*` keyword for parameters
+
+Consider having the following function:
+
+```python
+def draw_dot(color, x, y, z): 
+  print(f"drawing dot: x = {x}, y = {y}, z = {z}, color = {color}")
+```
+
+This function can be called both by named and ordered parameters. However, you can force the user *only use named parameters* by using the `*` keyword.
+
+```python
+def draw_dot(*, color, x, y, z): 
+  print(f"drawing dot: x = {x}, y = {y}, z = {z}, color = {color}")
+```
+
+Now the user can not call the function without named parameters:
+
+```python
+# will not work
+draw_dot('red', 10, 13, 11)
+
+# will work
+draw_dot(color='red', x=10, y=13, z=11)
+```
+
+You can also specify certain parameters to only be named parameters. For example:
+
+```python
+def draw_dot(color, *, x, y, z): 
+  print(f"drawing dot: x = {x}, y = {y}, z = {z}, color = {color}")
+```
+
+In this example, `color` does not have to be a named parameter but `x`, `y` and `z` are. So this function can be called in this way:
+
+```python
+draw_dot('red', x=10, y=13, z=11)
+```
+
+> [!INFO]
+> *Basically, all the parameters after the `*` are named parameters and all the parameters before that can be both called with their names and without*
+
+#### Functions Challenge 1
+
+Write a function that gets two parameters `num1` and `num2` and returns their multiplication product.
+
+<details>
+<summary>Answer</summary>
+
+```python
+def multiply(num1, num2):
+  return num1 * num2
+```
+
+</details>
+
+#### Functions Challenge 2
+
+Write a function named `my_max` that gets a list of numbers as a parameter named `nums` and returns the max number in this list.
+
+This would be the input and output example of this function:
+
+```text
+input: [12, 15, 18, 10, 11, 7]
+output: 18
+```
+
+
+
+<details>
+<summary>Answer</summary>
+
+```python
+def my_max(nums):
+  curr_max = nums[0]
+  for num in nums[1:]:
+    if num > curr_max:
+      curr_max = num
+  return curr_max
+k``
+
+</details>
+
 ## CheatSheet
 
 ## Jupyter Notebook Keybindings
@@ -770,3 +934,14 @@ print(my_dict) # {"Alireza": 12, "Mohammad": 23, "Hamed": 16}
 > is how mergin operator works. It overrides the values from from left-hand-side if a duplicate
 > exists in the right-hand-side. If we did the reverse, (`dict_2 | dict_1`) then the value of
 > `Mohammad` would be `18`.
+
+## To Dos
+
+- [ ] Strings Concatenation
+- [ ] Strings Advanced
+- [ ] Numpy Outline
+- [ ] Numpy CheatSheet
+- [ ] Pandas Outline
+- [ ] Pandas CheatSheet
+- [ ] Matplotlib + Seaborn Outline
+- [ ] Matplotlib + Seaborn CheatSheet
