@@ -16,6 +16,7 @@
     - [Moving Around in a Notebook](#moving-around-in-a-notebook)
   - [Getting Familiar with Python's Basic Syntax](#getting-familiar-with-pythons-basic-syntax)
     - [Variables - Basic Types](#variables---basic-types)
+    - [String Concatenation (Formatted Strings)](#string-concatenation-formatted-strings)
     - [Comments](#comments)
     - [Conditional Clauses](#conditional-clauses)
       - [`or` logical operator](#or-logical-operator)
@@ -186,6 +187,35 @@ name = "Alireza" # string
 > are connected with underlines.
 >
 > Though it is **only a convention**, using other naming methods like `isMale` will not through an error.
+
+### String Concatenation (Formatted Strings)
+
+Strings can be created with the following syntax:
+
+```python
+name = "Alireza"
+city = "Tehran"
+age = 23
+message = "Hello my name is " + name + ". I am from " + city + ". I am " + str(age) + "years old."
+print(message)
+```
+
+> [!NOTE]
+> Notice we are converting `age` to string, because you can not add a `int` to a `string` directly.
+> To do that first you have to convert the types.
+> In python for converting types, usually you use the name of the type (`str`, `int`) and then parenthesis.
+
+However, the above syntax is hard to read and write. It can be replaced with *formatted string* (`f-string`):
+
+```python
+name = "Alireza"
+city = "Tehran"
+age = 23
+message = f"Hello my name is {name}. I am from {city}. I am {age} years old."
+print(message)
+```
+
+Basically, we put an `f` behind the string and then put the variable names in curly brackets.
 
 ### Comments
 
