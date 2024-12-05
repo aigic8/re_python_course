@@ -38,6 +38,9 @@
       - [(Advanced) Functions `*` keyword for parameters](#advanced-functions--keyword-for-parameters)
       - [Functions Challenge 1](#functions-challenge-1)
       - [Functions Challenge 2](#functions-challenge-2)
+    - [Installing Libraries in a Local Environment](#installing-libraries-in-a-local-environment)
+    - [Freezing the Dependencies](#freezing-the-dependencies)
+    - [Installing the Frozen Dependencies](#installing-the-frozen-dependencies)
   - [CheatSheet](#cheatsheet)
     - [Jupyter Notebook Keybindings](#jupyter-notebook-keybindings)
     - [Lists CheatSheet](#lists-cheatsheet)
@@ -739,6 +742,69 @@ def my_max(nums):
 ```
 
 </details>
+
+### Installing Libraries in a Local Environment
+
+- In python, libraries can be installed both globally and locally (*in a virtual Environment*).
+  - `Globally`: The library is installed and is accessible on the whole system
+  - `Locally`: The library is only installed for a specific project
+  - The benefit of installing libraries per projects is different projects can have **conflicting requirements (different versions of the libraries)**.
+If libraries are installed only globally you would only have a singular version of them.
+- How to create a local environment?
+  - The process of creating a local environnement is **OS specific** (it is different based on the OS)
+  - `Windows`:
+    - Create a virtual environment using the following command. A folder named `venv` should be created.
+
+    ```bash
+    python3 -m venv venv
+    ```
+
+    - Activate the virtual environment using the following command. In the terminal, `(venv)` should become visible before the command.
+
+    ```bash
+    .\venv\Scripts\activate
+    ```
+
+  - `Linux` and `OSX`:
+    - Create a virtual environment using the following command. A folder named `venv` should be created.
+
+    ```bash
+    python3 -m venv venv
+    ```
+
+    - Activate the virtual environment using the following command. In the terminal, `(venv)` should become visible before the command.
+
+    ```bash
+    source venv/bin/activate
+    ```
+
+- After activating the local environment, you can install libraries using the following command. The command below will install `numpy` and `pandas` for example.
+
+```bash
+pip install numpy pandas
+```
+
+### Freezing the Dependencies
+
+- When sharing the project, the libraries used must also be specified. If you run the following command **in the virtual environment**, It will show you all the libraries that are currently being used:
+
+```bash
+pip freeze
+```
+
+- Now the results need to be saved into a file in order to be shared. The file with all of the library versions is conventionally named `requirements.txt` in python. In order to redirect the content to a file you need to run the following script:
+
+```bash
+pip freeze > requirements.txt
+```
+
+### Installing the Frozen Dependencies
+
+- When a new project is shared with you, having the file `requirements.txt`, you can install the dependencies using the following command:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## CheatSheet
 
