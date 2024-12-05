@@ -38,6 +38,7 @@
       - [(Advanced) Functions `*` keyword for parameters](#advanced-functions--keyword-for-parameters)
       - [Functions Challenge 1](#functions-challenge-1)
       - [Functions Challenge 2](#functions-challenge-2)
+  - [Dependency Management](#dependency-management)
     - [Installing Libraries in a Local Environment](#installing-libraries-in-a-local-environment)
     - [Freezing the Dependencies](#freezing-the-dependencies)
     - [Installing the Frozen Dependencies](#installing-the-frozen-dependencies)
@@ -743,6 +744,8 @@ def my_max(nums):
 
 </details>
 
+## Dependency Management
+
 ### Installing Libraries in a Local Environment
 
 - In python, libraries can be installed both globally and locally (*in a virtual Environment*).
@@ -805,6 +808,8 @@ pip freeze > requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+
+
 
 ## CheatSheet
 
