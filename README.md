@@ -42,6 +42,10 @@
     - [Installing Libraries in a Local Environment](#installing-libraries-in-a-local-environment)
     - [Freezing the Dependencies](#freezing-the-dependencies)
     - [Installing the Frozen Dependencies](#installing-the-frozen-dependencies)
+  - [Important Libraries](#important-libraries)
+    - [Numpy](#numpy)
+    - [Pandas](#pandas)
+    - [Matplotlib (+Seaborn)](#matplotlib-seaborn)
   - [CheatSheet](#cheatsheet)
     - [Jupyter Notebook Keybindings](#jupyter-notebook-keybindings)
     - [Lists CheatSheet](#lists-cheatsheet)
@@ -809,7 +813,23 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
+## Important Libraries
 
+### Numpy
+
+- It is an most widely used library for doing math operations on large datasets
+- What are the benefits?
+  - Being  **extremely faster** than the normal python slice
+  - Convenience functionalities for math operations
+  - Is supported by many other libraries like `pandas` and `matplotlib`
+
+### Pandas
+
+- It is used for reading, writing and editing csv (Excel) files (for example weather data). The main benefit is convenience.
+
+### Matplotlib (+Seaborn)
+
+- It is used for plotting charts.
 
 ## CheatSheet
 
