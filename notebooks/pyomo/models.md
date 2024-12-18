@@ -54,30 +54,59 @@ grid_sell_income = grid_sell_price \* v_grid_cell
 
 pv_init + grid_buy_price - grid_sell_income
 
-## Grid + Batteries + Variable Price
+## Input Energy + Batteries + Sell
+
+### Parameters Battery Input
+
+- soc_init = 500.0
+- soc_max = 500.0
+- soc_min = 0.0
+- sell_max = 150.0
+- input_energy[t]
+- price[t]
+
+### Variables Battery Input
+
+- v_sell[t]
+- v_soc[t]
+
+### Constraints Battery Input
+
+- v_sell[t] <= sell_max
+- v_soc[t] <= soc_max
+- v_soc[t] >= soc_min
+- v_soc[t-1] + input_energy[t] * model.soc_max - v_sell[t] == model.v_soc[t]
+
+### Objective Function Battery Input
+
+- sum(v_sell[t] * price[t]) (max)
+
+## Grid + Batteries + Sell + Buy
 
 ### Parameters Battery Grid
 
-- input_energy[t]
+- soc_init = 500.0
+- soc_max = 500.0
+- soc_min = 0.0
+- sell_max = 150.0
+- input_energy_max = 100
 - price[t]
-- soc_init
-- soc_max
-- soc_min
-- sell_max
 
 ### Variables Battery Grid
 
 - v_sell[t]
 - v_soc[t]
+- v_input_energy[t]
 
 ### Constraints Battery Grid
 
-- sell[t] <= sell_max
-- soc[t] <= soc_max
-- soc[t] >= soc_min
-- soc[t] - soc[t-1] = input_energy[t] - sell[t]
-- soc[1] - soc_init = input_energy[t] - sell[t]
+- v_sell[t] <= sell_max
+- v_input_energy[t] <= model.v_input_energy_max
+- v_soc[t] <= soc_max
+- v_soc[t] >= soc_min
+- soc_init + input_energy[0] - v_sell[0] == model.v_soc[0]
+- soc[t-1] + input_energy[t] - v_sell[t] == model.v_soc[t]
 
 ### Objective Function Battery Grid
 
-- sell[t] * p[t] (max)
+- sum((v_sell[t] - v_input_energy[t]) * price[t]) (max)
